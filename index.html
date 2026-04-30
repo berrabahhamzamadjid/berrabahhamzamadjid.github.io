@@ -308,7 +308,6 @@
         const card = document.createElement("div");
         card.className = "team-card";
         const photoHtml = m.photo ? `<img class="member-photo" src="${m.photo}" alt="photo">` : `<div class="member-photo" style="background:#ccc; display:inline-block;"></div>`;
-        // Choix de la classe CSS en fonction du statut "chef d'équipe"
         const nameClass = m.isChief ? "member-name chief-name" : "member-name";
         card.innerHTML = `
           <div class="card-header">

@@ -91,12 +91,18 @@
     }
     .member-info { flex: 1; }
     
-    .member-name { font-weight: 600; font-size: 1rem; }
+    /* Style pour les membres NORMAUX */
+    .member-name { 
+      font-weight: 600; 
+      font-size: 1rem; 
+      color: #1e293b;
+    }
     
+    /* Style pour les CHEFS d'équipe : BLEU + Taille PLUS GRANDE (sans héritage) */
     .chief-name { 
-      color: #1976d2; 
-      font-weight: 800; 
-      font-size: 1.2rem; 
+      color: #1976d2 !important; 
+      font-weight: 800 !important; 
+      font-size: 1.25rem !important; 
       letter-spacing: 0.5px;
     }
     
@@ -291,7 +297,8 @@
         const card = document.createElement("div");
         card.className = "team-card";
         const photoHtml = m.photo ? `<img class="member-photo" src="${m.photo}" alt="photo">` : `<div class="member-photo" style="background:#ccc; display:inline-block;"></div>`;
-        const nameClass = m.isChief ? "member-name chief-name" : "member-name";
+        // CORRECTION ICI : on applique UNIQUEMENT la classe chief-name si c'est un chef
+        const nameClass = m.isChief ? "chief-name" : "member-name";
         card.innerHTML = `
           <div class="card-header">
             ${photoHtml}

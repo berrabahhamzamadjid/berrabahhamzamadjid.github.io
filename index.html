@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LMIER - Laboratoire des Matériaux Innovants et Énergies Renouvelables</title>
   <style>
     * {
@@ -28,14 +28,13 @@
       overflow: hidden;
     }
 
-    /* --- BANDEAUX NOUVEAUX (université + créateur) --- */
+    /* --- BANDEAUX AJOUTÉS (université + créateur) --- */
     .top-banner {
       background: linear-gradient(135deg, #0a3c2c 0%, #166e48 100%);
       color: white;
       padding: 0.7rem 2rem;
       text-align: center;
       font-size: 0.85rem;
-      letter-spacing: 0.5px;
       border-bottom: 1px solid #ffb347;
     }
     .creator-strip {
@@ -44,32 +43,25 @@
       text-align: center;
       padding: 0.5rem 1rem;
       font-size: 0.8rem;
-      font-weight: 400;
       border-bottom: 1px solid #2a5a44;
     }
     .uni-name {
       font-weight: 700;
       font-size: 1rem;
-      display: inline-block;
       background: rgba(255,255,240,0.15);
       padding: 0.2rem 1rem;
       border-radius: 60px;
+      display: inline-block;
     }
 
-    /* --- suite du style (identique à l’original, amélioré) --- */
+    /* --- HEADER & CARDS (style existant amélioré) --- */
     .header {
       background: white;
       padding: 2rem 2rem 1rem 2rem;
       text-align: center;
       border-bottom: 1px solid #e2e8f0;
     }
-
-    .header h1 {
-      font-size: 2.2rem;
-      color: #0f5c3a;
-      letter-spacing: -0.5px;
-    }
-
+    .header h1 { font-size: 2.2rem; color: #0f5c3a; }
     .badge-container {
       display: flex;
       justify-content: center;
@@ -108,7 +100,6 @@
     .team-card {
       background: #ffffff;
       border-radius: 24px;
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
       border: 1px solid #eef2f0;
       overflow: hidden;
     }
@@ -116,101 +107,70 @@
       background: #fafcfe;
       padding: 0.8rem 1.2rem;
       border-bottom: 2px solid #ffb347;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
     }
-    .card-header h3 {
-      font-size: 1.3rem;
-      color: #1a4c3a;
-    }
-    .member-list {
-      padding: 0.5rem 0;
-    }
+    .card-header h3 { font-size: 1.3rem; color: #1a4c3a; }
+    .member-list { padding: 0.5rem 0; }
     .member-item {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: center;
       padding: 0.6rem 1.2rem;
       border-bottom: 1px solid #f0f2f5;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 8px;
     }
-    .member-name {
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: #1e2a3a;
+    .member-info {
+      flex: 1;
     }
-    .member-grade {
-      font-size: 0.75rem;
-      background: #eef2fa;
-      padding: 0.15rem 0.7rem;
-      border-radius: 30px;
-      color: #2c5f3a;
-    }
-    .member-uni {
-      font-size: 0.7rem;
-      color: #5a6874;
-      width: 100%;
-      margin-top: 3px;
-    }
-    .cv-action {
-      font-size: 0.65rem;
-      color: #c2410c;
-      background: #fff1e5;
-      padding: 2px 8px;
-      border-radius: 40px;
-      text-decoration: none;
-      margin-left: 6px;
-    }
-    .admin-area {
-      background: #fef3e8;
-      margin: 1.2rem 2rem 2rem;
-      padding: 1rem;
-      border-radius: 24px;
-      text-align: center;
-      border: 1px solid #ffe0b5;
-    }
-    .footer {
-      background: #0b3b2f;
-      color: #e2f2eb;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.75rem;
-    }
-    button {
-      background: #ffb347;
+    .member-name { font-weight: 700; font-size: 0.95rem; color: #1e2a3a; }
+    .member-grade { font-size: 0.75rem; background: #eef2fa; padding: 0.15rem 0.7rem; border-radius: 30px; display: inline-block; margin-left: 8px; }
+    .member-uni { font-size: 0.7rem; color: #5a6874; margin-top: 4px; }
+    .member-actions { display: flex; gap: 8px; align-items: center; }
+    .badge-photo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; background: #ddd; margin-right: 8px; }
+    .btn-icon {
+      background: none;
       border: none;
-      padding: 5px 20px;
-      border-radius: 40px;
-      font-weight: bold;
       cursor: pointer;
+      font-size: 1.1rem;
+      padding: 4px 8px;
+      border-radius: 20px;
+      transition: 0.1s;
     }
-    @media (max-width: 700px) {
-      .team-grid { grid-template-columns: 1fr; }
-      .top-banner, .creator-strip { font-size: 0.7rem; padding: 0.4rem; }
+    .btn-icon:hover { background: #e9ecef; }
+    .btn-admin-primary { background: #ffb347; color: #1e2a3a; border: none; padding: 6px 18px; border-radius: 40px; font-weight: bold; cursor: pointer; margin: 0 6px; }
+    .btn-admin-secondary { background: #e2e6ea; color: #2c3e2f; padding: 6px 18px; border-radius: 40px; border: none; cursor: pointer; }
+    .admin-panel {
+      background: #fff8f0;
+      margin: 1rem 2rem;
+      padding: 1.2rem;
+      border-radius: 24px;
+      border: 1px solid #ffddb5;
+      display: none;
     }
+    .admin-panel.visible { display: block; }
+    .form-row { margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+    .form-row input, .form-row select { padding: 6px 10px; border-radius: 20px; border: 1px solid #ccc; }
+    .footer { background: #0b3b2f; color: #e2f2eb; text-align: center; padding: 1rem; font-size: 0.75rem; }
+    @media (max-width: 700px) { .team-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 <div class="container">
 
-  <!-- ================================================= -->
-  <!--   ZONE AJOUTÉE (exactement ce que vous avez demandé) -->
-  <!--   - université “AHMED ZABAN Relizane, Algérie”      -->
-  <!--   - nom “Pr. BERRABAH HAMZA MADJID” comme créateur  -->
-  <!-- ================================================= -->
-  <div class="top-banner">
-    🎓 <span class="uni-name">UNIVERSITÉ AHMED ZABANA – RELIZANE, ALGÉRIE</span>
-  </div>
-  <div class="creator-strip">
-    ✦ Site créé et développé par <strong>Pr. BERRABAH HAMZA MADJID</strong> (LMIER – Laboratoire des Matériaux Innovants) ✦
-  </div>
+  <!-- Bandeaux institutionnels -->
+  <div class="top-banner">🎓 <span class="uni-name">UNIVERSITÉ AHMED ZABANA – RELIZANE, ALGÉRIE</span></div>
+  <div class="creator-strip">✦ Site créé et développé par <strong>Pr. BERRABAH HAMZA MADJID</strong> (LMIER – Laboratoire des Matériaux Innovants) ✦</div>
 
-  <!-- ========== CONTENU ORIGINAL DU SITE ========== -->
   <div class="header">
     <h1>LMIER</h1>
     <p>Laboratoire des Matériaux Innovants et Énergies Renouvelables</p>
     <div class="badge-container">
       <div class="badge">5 Équipes de recherche</div>
-      <div class="badge">38 Membres</div>
+      <div class="badge">Gestion dynamique</div>
       <div class="badge">Directeur : Pr. SALHI Mohamed</div>
     </div>
   </div>
@@ -219,130 +179,263 @@
     <strong>📌 À propos du laboratoire</strong><br>
     Le LMIER rassemble des enseignants-chercheurs et doctorants autour des matériaux innovants,
     du génie civil, de la durabilité, des composites, des sols reconstitués et des structures.
-    Ce site permet de consulter les membres de chaque équipe, leurs grades, leurs universités, leurs photos et leurs CV.
-    <div style="margin-top: 12px; font-style: italic;">Consultation libre • Modification réservée à l’administrateur</div>
+    <div style="margin-top: 8px; font-style: italic;">Consultation libre • Modification réservée à l’administrateur</div>
   </div>
 
-  <div class="section-title">📁 Equipe N°1 : Valorisation des Matériaux en Génie civil</div>
-  <div class="team-grid" id="team1"></div>
-
-  <div class="section-title">🏗️ Equipe N°2 : Durabilité des matériaux de construction</div>
-  <div class="team-grid" id="team2"></div>
-
-  <div class="section-title">🧬 Equipe N°3 : Matériaux composite</div>
-  <div class="team-grid" id="team3"></div>
-
-  <div class="section-title">🌍 Equipe N°4 : Comportement mécanique des sols reconstitués</div>
-  <div class="team-grid" id="team4"></div>
-
-  <div class="section-title">📐 Equipe N°5 : Structure et matériaux</div>
-  <div class="team-grid" id="team5"></div>
-
-  <div class="admin-area">
-    🔐 <strong>Accès administrateur</strong> – Espace protégé par mot de passe (réservé au responsable du laboratoire).<br>
-    <small>Le mot de passe n’est pas stocké sur cette page, seule la personne habilitée peut modifier les contenus.</small>
+  <!-- Zone de connexion administrateur -->
+  <div id="authArea" style="text-align:center; margin: 1rem 2rem;">
+    <button id="showAdminBtn" class="btn-admin-primary">🔐 Accès administrateur</button>
   </div>
 
-  <div class="footer">
-    Laboratoire LMIER – Université Ahmed Zabana, Relizane (Algérie) • 2025
+  <!-- Panneau d'administration (caché par défaut) -->
+  <div id="adminPanel" class="admin-panel">
+    <h3>🛠️ Administration – Gestion des membres</h3>
+    <div style="margin-bottom: 20px;">
+      <strong>Ajouter un nouveau membre</strong>
+      <div class="form-row">
+        <input type="text" id="newName" placeholder="Nom complet">
+        <input type="text" id="newGrade" placeholder="Grade (Pr, MCA, Doctorant...)">
+        <input type="text" id="newUni" placeholder="Université">
+        <select id="newTeamSelect">
+          <option value="team1">Equipe 1 - Valorisation des Matériaux</option>
+          <option value="team2">Equipe 2 - Durabilité</option>
+          <option value="team3">Equipe 3 - Matériaux composite</option>
+          <option value="team4">Equipe 4 - Sols reconstitués</option>
+          <option value="team5">Equipe 5 - Structure et matériaux</option>
+        </select>
+        <button id="addMemberBtn" class="btn-admin-primary">➕ Ajouter</button>
+      </div>
+    </div>
+    <div><em>💡 Cliquez sur "Modifier" ou "Supprimer" directement sur la fiche d’un membre.<br>Les photos/CV peuvent être ajoutés ultérieurement via l'icône 📎.</em></div>
+    <hr style="margin: 1rem 0;">
+    <button id="logoutBtn" class="btn-admin-secondary">🚪 Fermer l'administration</button>
   </div>
+
+  <!-- Emplacement des équipes -->
+  <div id="teamsContainer">
+    <div class="section-title">🧪 Equipe N°1 : Valorisation des Matériaux</div>
+    <div class="team-grid" id="team1Grid"></div>
+    <div class="section-title">🏗️ Equipe N°2 : Durabilité</div>
+    <div class="team-grid" id="team2Grid"></div>
+    <div class="section-title">🧬 Equipe N°3 : Matériaux composite</div>
+    <div class="team-grid" id="team3Grid"></div>
+    <div class="section-title">🌍 Equipe N°4 : Sols reconstitués</div>
+    <div class="team-grid" id="team4Grid"></div>
+    <div class="section-title">📐 Equipe N°5 : Structure et matériaux</div>
+    <div class="team-grid" id="team5Grid"></div>
+  </div>
+
+  <div class="footer">Laboratoire LMIER – Université Ahmed Zabana, Relizane (Algérie) • 2025</div>
 </div>
 
 <script>
-  (function() {
-    // Les données des équipes (exactement celles de la composition originale du laboratoire)
-    const membersData = {
-      team1: [
-        { name: "SALHI Mohamed", grade: "Pr", uni: "U Relizane" },
-        { name: "SAFER Omar", grade: "MCA", uni: "U Relizane" },
-        { name: "CHAIB Ouaddah", grade: "MCA", uni: "U Relizane" },
-        { name: "BOUBEKEUR Toufik", grade: "Pr", uni: "U Tissemsilt" },
-        { name: "BENYAHIA Amar", grade: "MCA", uni: "U Blida 2" },
-        { name: "ALI KOUADRI Fadhila", grade: "Doctorante", uni: "U Relizane" },
-        { name: "AMEUR MESSAFAH Ahmed", grade: "Doctorant", uni: "U Relizane" },
-        { name: "EZZIANE Sara Malak", grade: "Doctorante", uni: "U Relizane" }
-      ],
-      team2: [
-        { name: "LAOUFI Imene", grade: "MCA", uni: "U Relizane" },
-        { name: "MENAD Kamel", grade: "MCA", uni: "U Relizane" },
-        { name: "TABTI Afaf", grade: "MCA", uni: "U Relizane" },
-        { name: "BENSLAMA Khadidja", grade: "MCB", uni: "U Relizane" },
-        { name: "HAMMADACHE Miloud", grade: "MCA", uni: "U Relizane" },
-        { name: "BENABEDALLAH Mohamed", grade: "Doctorant", uni: "U Relizane" },
-        { name: "GUENDEZ Fatma Zohra", grade: "Doctorante", uni: "U Relizane" },
-        { name: "GHEFIR Meriem", grade: "Doctorante (science)", uni: "U Relizane" }
-      ],
-      team3: [
-        { name: "HADJ Mostefa ADDA", grade: "Pr", uni: "U Relizane" },
-        { name: "ABDELHAK Zahra", grade: "MCA", uni: "U Relizane" },
-        { name: "BALEGH Benamer", grade: "Pr", uni: "U Adrar" },
-        { name: "TOUNSI Abdeldjebar", grade: "MA 0x0d x10", uni: "" },
-        { name: "MERDACI Slimane", grade: "Pr", uni: "U Sidi Belabes" },
-        { name: "ZEROUKI Otmane", grade: "MCB", uni: "U Relizane" },
-        { name: "TOUNSI Abdelouahed", grade: "Pr associé", uni: "U Sidi Belabes" },
-        { name: "HOUCINE Said", grade: "Doctorant (science)", uni: "U Relizane" },
-        { name: "BACHIR BOUIADJRA Ahmed", grade: "Doctorant (science)", uni: "U Relizane" }
-      ],
-      team4: [
-        { name: "AIT MOHAMED AMER Adem", grade: "MCA", uni: "U Relizane" },
-        { name: "CHEMMAM Mohammed", grade: "MCA", uni: "U Relizane" },
-        { name: "ZEMRI Amine", grade: "MCA", uni: "U Relizane" },
-        { name: "NEHARI Abderrahim", grade: "Doctorant", uni: "U Relizane" },
-        { name: "KASSOUL Mohamed ABDENOUR", grade: "Doctorant", uni: "U Relizane" },
-        { name: "MERZOUG Fatiha", grade: "Doctorante (science)", uni: "U Relizane" }
-      ],
-      team5: [
-        { name: "BERRABAH Hamza Madjid", grade: "Pr", uni: "U Relizane" },
-        { name: "LATROUCHE Noureddine", grade: "MCA", uni: "U Relizane" },
-        { name: "ZINE Abdallah", grade: "MCA", uni: "U Relizane" },
-        { name: "SEKKAL Mohamed", grade: "MCA", uni: "U Relizane" },
-        { name: "SAFA Abdelkader", grade: "MCB", uni: "U Relizane" },
-        { name: "AMEUR Bachir", grade: "Doctorant", uni: "U Relizane" },
-        { name: "MECHLOUF Halima", grade: "Doctorante", uni: "U Relizane" }
-      ]
-    };
+  // --------------------------------------------------------------
+  // DONNÉES INITIALES (structure exacte de votre laboratoire)
+  // --------------------------------------------------------------
+  const defaultData = {
+    team1: [
+      { id: "m1", name: "SALHI Mohamed", grade: "Pr", uni: "U Relizane", photo: null, cv: null },
+      { id: "m2", name: "SAFER Omar", grade: "MCA", uni: "U Relizane", photo: null, cv: null },
+      { id: "m3", name: "CHAIB Ouaddah", grade: "MCA", uni: "U Relizane", photo: null, cv: null },
+      { id: "m4", name: "BOUBEKEUR Toufik", grade: "Pr", uni: "U Tissemsilt", photo: null, cv: null },
+      { id: "m5", name: "BENYAHIA Amar", grade: "MCA", uni: "U Blida 2", photo: null, cv: null },
+      { id: "m6", name: "ALI KOUADRI Fadhila", grade: "Doctorante", uni: "U Relizane", photo: null, cv: null },
+      { id: "m7", name: "AMEUR MESSAFAH Ahmed", grade: "Doctorant", uni: "U Relizane", photo: null, cv: null },
+      { id: "m8", name: "EZZIANE Sara Malak", grade: "Doctorante", uni: "U Relizane", photo: null, cv: null }
+    ],
+    team2: [
+      { id: "m9", name: "LAOUFI Imene", grade: "MCA", uni: "U Relizane", photo: null, cv: null },
+      { id: "m10", name: "MENAD Kamel", grade: "MCA", uni: "U Relizane", photo: null, cv: null },
+      { id: "m11", name: "TABTI Afaf", grade: "MCA", uni: "U Relizane", photo: null, cv: null },
+      { id: "m12", name: "BENSLAMA Khadidja", grade: "MCB", uni: "U Relizane", photo: null, cv: null },
+      { id: "m13", name: "HAMMADACHE Miloud", grade: "MCA", uni: "U Relizane", photo: null, cv: null },
+      { id: "m14", name: "BENABEDALLAH Mohamed", grade: "Doctorant", uni: "U Relizane", photo: null, cv: null },
+      { id: "m15", name: "GUENDEZ Fatma Zohra", grade: "Doctorante", uni: "U Relizane", photo: null, cv: null },
+      { id: "m16", name: "GHEFIR Meriem", grade: "Doctorante (science)", uni: "U Relizane", photo: null, cv: null }
+    ],
+    team3: [
+      { id: "m17", name: "HADJ Mostefa ADDA", grade: "Pr", uni: "U Relizane", photo: null, cv: null },
+      { id: "m18", name: "ABDELHAK Zahra", grade: "MCA", uni: "U Relizane", photo: null, cv: null },
+      { id: "m19", name: "BALEGH Benamer", grade: "Pr", uni: "U Adrar", photo: null, cv: null },
+      { id: "m20", name: "TOUNSI Abdeldjebar", grade: "MA", uni: "U Relizane", photo: null, cv: null },
+      { id: "m21", name: "MERDACI Slimane", grade: "Pr", uni: "U Sidi Belabes", photo: null, cv: null },
+      { id: "m22", name: "ZEROUKI Otmane", grade: "MCB", uni: "U Relizane", photo: null, cv: null },
+      { id: "m23", name: "TOUNSI Abdelouahed", grade: "Pr associé", uni: "U Sidi Belabes", photo: null, cv: null },
+      { id: "m24", name: "HOUCINE Said", grade: "Doctorant (science)", uni: "U Relizane", photo: null, cv: null },
+      { id: "m25", name: "BACHIR BOUIADJRA Ahmed", grade: "Doctorant (science)", uni: "U Relizane", photo: null, cv: null }
+    ],
+    team4: [
+      { id: "m26", name: "AIT MOHAMED AMER Adem", grade: "MCA", uni: "U Relizane", photo: null, cv: null },
+      { id: "m27", name: "CHEMMAM Mohammed", grade: "MCA", uni: "U Relizane", photo: null, cv: null },
+      { id: "m28", name: "ZEMRI Amine", grade: "MCA", uni: "U Relizane", photo: null, cv: null },
+      { id: "m29", name: "NEHARI Abderrahim", grade: "Doctorant", uni: "U Relizane", photo: null, cv: null },
+      { id: "m30", name: "KASSOUL Mohamed ABDENOUR", grade: "Doctorant", uni: "U Relizane", photo: null, cv: null },
+      { id: "m31", name: "MERZOUG Fatiha", grade: "Doctorante (science)", uni: "U Relizane", photo: null, cv: null }
+    ],
+    team5: [
+      { id: "m32", name: "BERRABAH Hamza Madjid", grade: "Pr", uni: "U Relizane", photo: null, cv: null },
+      { id: "m33", name: "LATROUCHE Noureddine", grade: "MCA", uni: "U Relizane", photo: null, cv: null },
+      { id: "m34", name: "ZINE Abdallah", grade: "MCA", uni: "U Relizane", photo: null, cv: null },
+      { id: "m35", name: "SEKKAL Mohamed", grade: "MCA", uni: "U Relizane", photo: null, cv: null },
+      { id: "m36", name: "SAFA Abdelkader", grade: "MCB", uni: "U Relizane", photo: null, cv: null },
+      { id: "m37", name: "AMEUR Bachir", grade: "Doctorant", uni: "U Relizane", photo: null, cv: null },
+      { id: "m38", name: "MECHLOUF Halima", grade: "Doctorante", uni: "U Relizane", photo: null, cv: null }
+    ]
+  };
 
-    function buildCards(teamId, membersArray) {
-      const container = document.getElementById(teamId);
-      if(!container) return;
-      container.innerHTML = '';
-      const card = document.createElement('div');
-      card.className = 'team-card';
-      const header = document.createElement('div');
-      header.className = 'card-header';
-      let teamTitle = '';
-      if(teamId === 'team1') teamTitle = 'Valorisation des Matériaux';
-      else if(teamId === 'team2') teamTitle = 'Durabilité des matériaux';
-      else if(teamId === 'team3') teamTitle = 'Matériaux composite';
-      else if(teamId === 'team4') teamTitle = 'Sols reconstitués (cisaillement)';
-      else teamTitle = 'Structure et matériaux';
-      header.innerHTML = `<h3>📌 ${teamTitle}</h3><div style="font-size:0.7rem; color:#6b7c8f;">${membersArray.length} membres</div>`;
-      card.appendChild(header);
-      const memberDiv = document.createElement('div');
-      memberDiv.className = 'member-list';
-      membersArray.forEach(m => {
-        const item = document.createElement('div');
-        item.className = 'member-item';
-        item.innerHTML = `
-          <div style="display:flex; flex-wrap:wrap; justify-content:space-between; width:100%;">
-            <span class="member-name">${m.name}</span>
-            <span class="member-grade">${m.grade}</span>
-          </div>
-          <div class="member-uni">🏛️ ${m.uni}</div>
-          <div><span class="cv-action">📄 CV indisponible (administration)</span></div>
-        `;
-        memberDiv.appendChild(item);
-      });
-      card.appendChild(memberDiv);
-      container.appendChild(card);
+  // Charger depuis localStorage ou initialiser
+  let labData = JSON.parse(localStorage.getItem("LMIER_labData"));
+  if (!labData) {
+    labData = defaultData;
+    localStorage.setItem("LMIER_labData", JSON.stringify(labData));
+  }
+
+  // Gestion du mot de passe (simple, stocké dans localStorage, visible nulle part)
+  let adminAuthenticated = false;
+  let storedPass = localStorage.getItem("LMIER_adminPass");
+  function checkAuth() {
+    if(adminAuthenticated) return true;
+    let pass;
+    if(!storedPass) {
+      pass = prompt("🔐 Création du mot de passe administrateur :");
+      if(pass) { localStorage.setItem("LMIER_adminPass", pass); storedPass = pass; adminAuthenticated = true; }
+      else return false;
+    } else {
+      pass = prompt("🔐 Mot de passe administrateur :");
+      if(pass === storedPass) { adminAuthenticated = true; }
+      else { alert("Mot de passe incorrect"); return false; }
     }
+    return adminAuthenticated;
+  }
 
-    buildCards('team1', membersData.team1);
-    buildCards('team2', membersData.team2);
-    buildCards('team3', membersData.team3);
-    buildCards('team4', membersData.team4);
-    buildCards('team5', membersData.team5);
-  })();
+  // Rendu des équipes
+  function renderTeams() {
+    for(let i=1;i<=5;i++) {
+      const teamKey = `team${i}`;
+      const container = document.getElementById(`${teamKey}Grid`);
+      if(!container) continue;
+      container.innerHTML = "";
+      const members = labData[teamKey] || [];
+      members.forEach(member => {
+        const cardDiv = document.createElement("div");
+        cardDiv.className = "team-card";
+        cardDiv.setAttribute("data-id", member.id);
+        const photoHtml = member.photo ? `<img class="badge-photo" src="${member.photo}" alt="photo">` : `<div class="badge-photo" style="background:#ccc; display:inline-block; vertical-align:middle;"></div>`;
+        cardDiv.innerHTML = `
+          <div class="card-header">
+            <div><strong>${member.name}</strong> <span class="member-grade">${member.grade}</span></div>
+            <div class="member-actions">
+              ${adminAuthenticated ? `<button class="btn-icon edit-member" data-id="${member.id}" data-team="${teamKey}">✏️ Modifier</button>
+              <button class="btn-icon delete-member" data-id="${member.id}" data-team="${teamKey}">🗑️ Supprimer</button>` : ""}
+              <button class="btn-icon cv-upload" data-id="${member.id}" data-team="${teamKey}">📎 CV</button>
+            </div>
+          </div>
+          <div class="member-list">
+            <div class="member-item">
+              <div class="member-info">
+                <div>🏛️ ${member.uni}</div>
+                <div>📄 ${member.cv ? `<a href="${member.cv}" target="_blank">Voir CV</a>` : "CV non déposé"}</div>
+              </div>
+            </div>
+          </div>
+        `;
+        container.appendChild(cardDiv);
+      });
+    }
+    attachAdminEvents();
+  }
+
+  function attachAdminEvents() {
+    if(!adminAuthenticated) return;
+    document.querySelectorAll(".edit-member").forEach(btn => {
+      btn.onclick = () => {
+        const memberId = btn.getAttribute("data-id");
+        const team = btn.getAttribute("data-team");
+        const member = labData[team].find(m => m.id === memberId);
+        if(!member) return;
+        const newName = prompt("Nouveau nom :", member.name);
+        const newGrade = prompt("Nouveau grade :", member.grade);
+        const newUni = prompt("Université :", member.uni);
+        if(newName) member.name = newName;
+        if(newGrade) member.grade = newGrade;
+        if(newUni) member.uni = newUni;
+        localStorage.setItem("LMIER_labData", JSON.stringify(labData));
+        renderTeams();
+      };
+    });
+    document.querySelectorAll(".delete-member").forEach(btn => {
+      btn.onclick = () => {
+        if(confirm("Supprimer ce membre ?")) {
+          const memberId = btn.getAttribute("data-id");
+          const team = btn.getAttribute("data-team");
+          labData[team] = labData[team].filter(m => m.id !== memberId);
+          localStorage.setItem("LMIER_labData", JSON.stringify(labData));
+          renderTeams();
+        }
+      };
+    });
+    document.querySelectorAll(".cv-upload").forEach(btn => {
+      btn.onclick = () => {
+        const memberId = btn.getAttribute("data-id");
+        const team = btn.getAttribute("data-team");
+        const member = labData[team].find(m => m.id === memberId);
+        const fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.accept = "application/pdf";
+        fileInput.onchange = (e) => {
+          const file = e.target.files[0];
+          if(file) {
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+              member.cv = ev.target.result;
+              localStorage.setItem("LMIER_labData", JSON.stringify(labData));
+              renderTeams();
+              alert(`CV ajouté pour ${member.name}`);
+            };
+            reader.readAsDataURL(file);
+          }
+        };
+        fileInput.click();
+      };
+    });
+  }
+
+  // Ajout d'un nouveau membre
+  document.getElementById("addMemberBtn")?.addEventListener("click", () => {
+    if(!adminAuthenticated) return;
+    const name = document.getElementById("newName").value.trim();
+    const grade = document.getElementById("newGrade").value.trim();
+    const uni = document.getElementById("newUni").value.trim();
+    const teamKey = document.getElementById("newTeamSelect").value;
+    if(!name || !grade || !uni) { alert("Veuillez remplir tous les champs"); return; }
+    const newId = Date.now().toString();
+    labData[teamKey].push({ id: newId, name, grade, uni, photo: null, cv: null });
+    localStorage.setItem("LMIER_labData", JSON.stringify(labData));
+    renderTeams();
+    document.getElementById("newName").value = "";
+    document.getElementById("newGrade").value = "";
+    document.getElementById("newUni").value = "";
+    alert("Membre ajouté !");
+  });
+
+  // Connexion / déconnexion admin
+  const authBtn = document.getElementById("showAdminBtn");
+  const adminPanel = document.getElementById("adminPanel");
+  authBtn.onclick = () => {
+    if(checkAuth()) {
+      adminPanel.classList.add("visible");
+      renderTeams();   // recharger la vue avec boutons d'admin
+      authBtn.style.display = "none";
+    }
+  };
+  document.getElementById("logoutBtn")?.addEventListener("click", () => {
+    adminAuthenticated = false;
+    adminPanel.classList.remove("visible");
+    authBtn.style.display = "inline-block";
+    renderTeams();  // repasser en vue publique (sans boutons admin)
+  });
+
+  renderTeams();
 </script>
 </body>
 </html>

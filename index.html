@@ -24,7 +24,6 @@
       overflow: hidden;
     }
 
-    /* Bandeaux institutionnels */
     .top-banner {
       background: linear-gradient(135deg, #0a3c2c 0%, #166e48 100%);
       color: white;
@@ -47,13 +46,11 @@
       display: inline-block;
     }
 
-    /* Header avec LMIER en bleu clair */
     .header { background: white; padding: 2rem 2rem 1rem; text-align: center; border-bottom: 1px solid #e2e8f0; }
     .header h1 { font-size: 2.2rem; color: #4aa3df; letter-spacing: 2px; }
     .badge-container { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin: 1.5rem 0 0.5rem; }
     .badge { background: #eef2ff; padding: 0.4rem 1.2rem; border-radius: 40px; font-weight: bold; color: #1f5e3f; }
 
-    /* Titres d'équipes en ROUGE (sans 📌) */
     .section-title {
       font-size: 1.6rem;
       font-weight: 600;
@@ -94,13 +91,8 @@
     }
     .member-info { flex: 1; }
     
-    /* Style pour les membres normaux */
-    .member-name { 
-      font-weight: 600; 
-      font-size: 1rem; 
-    }
+    .member-name { font-weight: 600; font-size: 1rem; }
     
-    /* Style pour les CHEFS d'équipe : BLEU + Taille PLUS GRANDE */
     .chief-name { 
       color: #1976d2; 
       font-weight: 800; 
@@ -127,7 +119,6 @@
     .form-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; align-items: flex-end; }
     .form-row input, .form-row select, .form-row textarea { padding: 6px 12px; border-radius: 24px; border: 1px solid #ccc; }
 
-    /* Zone actualités */
     .news-section {
       background: #faf9f5;
       margin: 2rem 1.5rem 1.5rem;
@@ -155,7 +146,6 @@
 <body>
 <div class="container">
 
-  <!-- Bandeaux institutionnels -->
   <div class="top-banner">🎓 <span class="uni-name">UNIVERSITÉ AHMED ZABANA – RELIZANE, ALGÉRIE</span></div>
   <div class="creator-strip">✦ Site créé et développé par <strong>Pr. BERRABAH HAMZA MADJID</strong> (LMIER – Laboratoire des Matériaux Innovants) ✦</div>
 
@@ -169,7 +159,6 @@
     </div>
   </div>
 
-  <!-- Authentification / Administration -->
   <div id="authArea" style="text-align:center; margin: 1rem 2rem;">
     <button id="showAdminBtn" class="btn-admin-primary">🔐 Accès administrateur</button>
   </div>
@@ -193,7 +182,6 @@
 
   <div id="teamsContainer"></div>
 
-  <!-- SECTION ACTUALITÉS SCIENTIFIQUES -->
   <div class="news-section" id="newsSection">
     <h3 style="margin-bottom: 1rem;">📢 Actualités scientifiques & vie du laboratoire</h3>
     <div id="newsList"></div>
@@ -217,13 +205,10 @@
     <button id="toggleAdminNews" class="btn-admin-secondary" style="margin-top:12px;">✏️ Gérer les actualités (admin seulement)</button>
   </div>
 
-  <div class="footer">Laboratoire LMIER – Université Ahmed Zabana, Relizane (Algérie) • 2025</div>
+  <div class="footer">Laboratoire LMIER – Université Ahmed Zabana, Relizane (Algérie) • 2026</div>
 </div>
 
 <script>
-  // --------------------------------------------------------------
-  // DONNÉES INITIALES (membres avec indication des chefs d'équipe)
-  // --------------------------------------------------------------
   const defaultData = {
     team1: [
       { id: "t1a", name: "SALHI Mohamed", grade: "Pr", uni: "U Relizane", photo: null, cv: null, isChief: true },
@@ -277,7 +262,6 @@
   let labData = JSON.parse(localStorage.getItem("LMIER_labData")) || JSON.parse(JSON.stringify(defaultData));
   function saveData() { localStorage.setItem("LMIER_labData", JSON.stringify(labData)); }
 
-  // Actualités
   let newsItems = JSON.parse(localStorage.getItem("LMIER_news")) || [
     { id: "n1", title: "Convention avec l'Université de Lorraine (France)", date: "10 Mars 2025", category: "convention", desc: "Échange académique et projet de cotutelle.", link: "" },
     { id: "n2", title: "Projet PRFU : Matériaux innovants pour chaussées durables", date: "Jan 2025", category: "projet", desc: "Financement obtenu pour 2025-2027.", link: "" },
@@ -285,7 +269,6 @@
   ];
   function saveNews() { localStorage.setItem("LMIER_news", JSON.stringify(newsItems)); }
 
-  // Rendu des équipes
   function renderTeams() {
     const container = document.getElementById("teamsContainer");
     if(!container) return;
@@ -410,7 +393,6 @@
     }
   }
 
-  // Admin authentication
   let adminAuth = false;
   let storedPass = localStorage.getItem("LMIER_adminPass");
   function checkAuth() {
